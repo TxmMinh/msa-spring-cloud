@@ -1,0 +1,18 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes: # \u0111\u0103ng k\u00FD gateway cho module currency calculation service. L\u01B0u \u00FD property uri s\u1EED d\u1EE5ng lb:// <t\u00EAn module> \u0111\u01B0\u01B0\u1EE3c \u0111\u0103ng k\u00FD t\u1EA1i Eureka Server
+        - id: calculation-service
+          uri: lb://CURRENCY-CALCULATION-SERVICE/
+          predicates:
+            - Path=/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

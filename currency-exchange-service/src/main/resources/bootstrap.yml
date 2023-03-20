@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888 # đăng ký với config server
+  application:
+      name: currency-exchange-service
+  profiles:
+    active: dev # khi khởi chạy sẽ lấy thông tin file tương ứng là currency-exchange-service.properties
+
+server:
+  port: 8000
+
+# đăng ký với eureka server đây là một eureka client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
